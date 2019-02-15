@@ -1,10 +1,10 @@
-# Data-Analytics
-Yelp dataset analysis
-Introduction
+# Yelp dataset analysis 
+
+# Introduction
 
 Yelp’s open data source shares global crowdsourced data on different business across cities. It encourages students and researchers to dive deep into the dataset and retrieve useful information. This project mainly focus on its three files business, reviews, and users and each file consists of one json-object-per-line. To be specific, the ‘business.json’ specifies the business ID, name, state, stars, categories, review count, etc. of each individual business and each text review is a JSON object in the ‘review.json’ which determines the business ID, user ID, stars, review text, date and votes. The main goal of this project is to solve two research questions with exploratory data analysis in python. The first part is to compare and contrast the rating distributions of three particular metropolitan areas (Phoenix, Charlotte, Las Vages) based on one specific business (Beauty & Spas and Nail Salons) and initial null hypothesis is that they show same distribution patterns. In terms of their main statistical properties, it is hypothesized that they might be consistent across different areas. Second, it is supposed to research on the distributions of the review count for both each individual user and individual business in Phoenix and estimate the parameters as well. The pow law distribution becomes the intuition to describe those data. 
 
-Methodology 
+# Methodology 
 Question 1 
 The raw dataset is converted from json format to csv format at the very beginning. Data cleaning, including missing values check and duplicated data removal is conducted to ensure the data is correct, complete and consistent for analysis. For the business file, useful attributes ‘business_ID', 'categories', 'stars', 'state' and 'review_count' are extracted and stored in a new business DataFrame. In order to focus on three metropolitan areas, we filter business entities based on their ‘state’ field and generate three separate DataFrames for Phoenix(‘AZ’), Charlotte(‘NC) and Las Vages(NV). In the same manner, we extract a specific business Beauty & Spas and Nail Salons based on ‘business’ field for those three areas respectively. 
 
@@ -22,7 +22,7 @@ Then, in order to demonstrate the performance of this power law model with the e
 
 
 
-Results
+# Results
 Question 1 
  Figure 1. Star Rating distribution of the business Beauty & Spas and Nail Salons for Phoenix, Charlotte and Las Vegas
 Figure 1 indicates that rating distribution in Phoenix and Las Vegas show quite similar patterns and this is also supported by the result of Anderson-Darling test, where the statistic result (-0.23) is less than significant level (0.325) and accept the null hypothesis. The distribution in Charlotte is different since its statistic results (4.17;3.02) with Phoenix and Las Vegas are more than corresponding significant levels (3.725; 2.718) and reject the null hypotheses.
@@ -43,7 +43,7 @@ Figure 2. Fitting Review count distributions with Maximum Likelihood Method for 
 Two scatter plots above show the distributions of empirical data (black) and power law model (red). In terms of the review count distribution of individual user, the estimated parameter α for hypothesized power law model is 1.96, the ‘empirical KS distance’ is 0.502 and the P-value is 0.39. For individual business, the parameter α is 1.74, the ‘empirical KS distance’ is 0.303 and the P value is 0.88.  
 
 
-Discussion & Conclusions
+# Discussion & Conclusions
 According to the distribution plots, Anderson-Darling test and calculation of main statistical properties, it is found that rating distributions of Beauty & Spas and Nail Salons in Phoenix and Las Vegas are quite similar, which is consistent with the initial assumption. The pattern of another area Charlotte looks different, with relative lower average rating and higher rating variability. Overall, all three distributions are left-skewed and have long left tails, this means the average ratings are more likely to be affected by the low ratings. Despite of extreme values, the means of rating are still approximately 3.5 and it seems that most users in these areas are satisfied with the service in Beauty & Spas and Nail Salons. Also, platykurtic distributions (kurtosis < 3) suggest that those rating values are evenly distributed on both sides of the mode (3.5/4.0). One potential problem it that the results and analysis may not precisely reflect the data trend as the small sample size. For example, the amount of object for Beauty & Spas and Nail Salons in Charlotte area is only 127. Small sample size tends to cause bias and larger size helps to detect the features of the data.
 
 In the second question, maximum likelihood estimator is used to estimate the exponent of the power law distribution with the Kolmogorov-Smirnoff (KS) to assess the goodness of fitting. It seems that the results are consistent with the initial hypotheses. Based on the fact that both P-values are more than 0.05, the null hypotheses that empirical data and power law model follow the same distribution are not rejected and power-law seems well suited to describe both the review count distributions of individual users and individual businesses. This indicates that the majority of users tend to seldom leave reviews and user who are willing to write quite a lot is quite few. Meanwhile, only a small part of business may receive plenty of reviews. 
@@ -54,7 +54,7 @@ For further research, bootstrap method and Jakknife method can be applied to eva
 
 
 
-Reference 
+# Reference 
 Clauset, A., Cosma, R. S., & Mark, E. N. (2009) "Power-law distributions in empirical data." SIAM review 51.4: 661-703.
 
 Michel, L., Goldstein, Steven A. Morris, Gary G. Yen (2004) “Fitting to the Power-Law Distribution” School of Electrical and Computer Engineering, Oklahoma State University, Stillwater, OK 74078.
